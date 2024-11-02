@@ -1,0 +1,100 @@
+{% extends "quotations/base.html" %}
+{% load static %}
+
+{% block title %}Login - CPQS{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="login-container">
+        <h2>Login</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="button-container">
+                <button type="submit" class="btn btn-custom">Login</button>
+            </div>
+        </form>
+        <a href="{% url 'register' %}" class="btn btn-outline-custom mt-3">Don't have an account? Register</a>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_styles %}
+<style>
+    body {
+        /* Moving background gradient */
+        background: linear-gradient(135deg, #ff66b2, #9b59b6, #f06292, #e91e63);
+        background-size: 300% 300%;
+        animation: gradientAnimation 10s ease infinite;
+        font-family: 'Roboto', sans-serif;
+        color: #ffffff;
+        overflow: hidden; /* Prevents scrollbars from appearing during animation */
+    }
+
+    /* Gradient animation */
+    @keyframes gradientAnimation {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    .container {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .login-container {
+        width: 450px; /* Enlarged container */
+        padding: 40px;
+        background-color: rgba(30, 30, 30, 0.95);
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        color: #ffffff;
+        text-align: center;
+        border: 2px solid #ff66b2; /* Border around the container */
+    }
+
+    h2 {
+        margin-bottom: 20px;
+        color: #ffffff;
+    }
+
+    .button-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .btn-custom {
+        background-color: #9b59b6;
+        color: white;
+        border-radius: 20px;
+        padding: 0.5rem 1.5rem;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-custom:hover {
+        background-color: #8e44ad;
+    }
+
+    .btn-outline-custom {
+        border-color: #9b59b6;
+        color: #9b59b6;
+        border-radius: 20px;
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .btn-outline-custom:hover {
+        background-color: #9b59b6;
+        color: white;
+    }
+
+    input, button {
+        font-size: 1rem;
+    }
+</style>
+{% endblock %}
